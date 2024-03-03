@@ -1,0 +1,12 @@
+import requests
+from bs4 import BeautifulSoup
+
+def get_image_details(url):
+    r = requests.get(url)
+    soup = BeautifulSoup(r.text, 'html.parser')
+    
+    for item in soup.find_all('img'):
+        print(f"Image URL: {item['src']}")
+
+# Example usage
+get_image_details("https://www.geeksforgeeks.org/")
